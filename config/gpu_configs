@@ -1,0 +1,16 @@
+nvidia-tesla-p100,1,f
+nvidia-tesla-p100,2,f
+nvidia-tesla-p100,4,f
+
+nvidia-tesla-p4,1,a
+nvidia-tesla-p4,2,a
+nvidia-tesla-p4,4,a
+
+nvidia-tesla-t4,1,f
+nvidia-tesla-t4,2,f
+nvidia-tesla-t4,4,f
+
+nvidia-tesla-v100,1,f
+nvidia-tesla-v100,2,f
+nvidia-tesla-v100,4,f
+nvidia-tesla-v100,8,f

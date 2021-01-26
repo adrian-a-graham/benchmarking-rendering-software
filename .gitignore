@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Custom
+.DS_Store
+*.swp
+scenes/*
+reports/*
+old
+
+!.gitkeep
+
