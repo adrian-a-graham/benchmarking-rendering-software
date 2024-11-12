@@ -134,6 +134,7 @@ dmypy.json
 scenes/*
 reports/*
 old
+results/
 
 !.gitkeep
 
