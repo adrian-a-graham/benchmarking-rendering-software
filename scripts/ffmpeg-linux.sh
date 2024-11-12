@@ -17,6 +17,9 @@
 # Set correct timezone.
 timedatectl set-timezone America/Los_Angeles
 
+# Set ffmpeg report file location.
+export FFREPORT=file=/var/log/ffmpeg-$(date +%Y%m%s).log
+
 # Report start.
 echo "`date`: ********* START $0 BENCHMARK SETUP *********"
 
@@ -109,6 +112,7 @@ for ROUND in $(seq 1 $NUM_ROUNDS); do
 
   ffmpeg \
     -i $TMPDIR/$VIDEO_NAME \
+    -report \
     -c:v libx264 \
     -filter:v scale="-2:$RESOLUTION_Y" \
     -preset:v medium \
@@ -116,9 +120,7 @@ for ROUND in $(seq 1 $NUM_ROUNDS); do
     -tune psnr -profile:v high -b:v 6M -maxrate 12M -bufsize 24M \
     -c:a copy \
     -y \
-    $TMPDIR/$VIDEO_NAME-${RESOLUTION_Y}p.mp4
-
-#    -filter:v scale="trunc(oh/a/2)*2:$RESOLUTION" \
+    $TMPDIR/$VIDEO_NAME-$RESOLUTION_Y.mp4
 
   echo "`date`: ********* END $BENCHMARK *********"
 

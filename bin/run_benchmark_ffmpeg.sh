@@ -1,13 +1,13 @@
 #!/bin/sh
 
-# Copyright 2020 Google Inc.
-#
+# Copyright 2024 Google LLC
+# 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
+# 
+#   https://www.apache.org/licenses/LICENSE-2.0
+# 
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -95,7 +95,7 @@ if [ $VERBOSE -eq 1 ]; then
   echo "OS=$OS"
 fi
 
-SESSION_INFO=$BENCH_TYPE-$(date +'%Y%m%dt%H%M')-$ACCELERATOR
+SESSION_INFO=$BENCH_TYPE-$(date +'%Y%m%dt%H%M')-$ACCELERATOR-$RESOLUTION
 
 # Read configs.
 CONFIGS=$(<$CONFIG_FILE)
@@ -103,7 +103,7 @@ CONFIGS=$(<$CONFIG_FILE)
 
 # Set up vars.
 PROJECT="benchmarking-rendering-sw"
-STARTUP_SCRIPT_URL="gs://render-benchmark-scripts/$BENCH_TYPE-$OS.sh"
+STARTUP_SCRIPT_URL="gs://render-benchmark-scripts/$BENCH_TYPE-$OS-startup.sh"
 IMAGE="ubuntu-2204-jammy-v20240927"
 IMAGE_PROJECT="ubuntu-os-cloud"
 BOOT_DISK_SIZE="10GB"
@@ -155,7 +155,7 @@ for CONFIG in $CONFIGS; do
     HYPERDISK_STR="provisioned-iops=3060,provisioned-throughput=155,"
   fi
 
-  INSTANCE_NAME=$BENCH_TYPE-$CONFIG-$ACCEL_INFO
+  INSTANCE_NAME=$BENCH_TYPE-$CONFIG-$ACCEL_INFO-$RESOLUTION
 
   # Build create command.
   CMD="gcloud compute \
