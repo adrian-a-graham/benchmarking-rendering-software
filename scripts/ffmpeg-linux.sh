@@ -29,13 +29,14 @@ echo "`date`: ********* START $0 BENCHMARK SETUP *********"
 BENCHMARK_SCRIPT_LOC=gs://render-benchmark-scripts
 BENCHMARK_REPORT_LOC=gs://render-benchmark-reports
 BENCHMARK_VIDEO_LOC=gs://render-benchmark-videos
-NUM_ROUNDS=6
+NUM_ROUNDS=4
 NVIDIA_DRIVER=install-nvidia-driver-linux.sh
 ACCELERATOR="cpu"
 
 # Software-specific variables. 
 TMPDIR=/tmp
-VIDEO_NAME=bbb_sunflower_2160p_30fps_normal.mp4
+#VIDEO_NAME=bbb_sunflower_2160p_30fps_normal.mp4
+VIDEO_NAME=160minutes_bbb_sunflower_native_30fps_normal.mp4
 #VIDEO_NAME=bbb_sunflower_2160p_30fps_short.mp4 #<-- very short for testing
 
 # Query instance metadata.
@@ -67,11 +68,6 @@ REPORT_FILE=$BENCHMARK_REPORT_TMP/$INSTANCE_NAME.$$.json
 
 # Download video file.
 gcloud storage cp $BENCHMARK_VIDEO_LOC/$VIDEO_NAME $TMPDIR
-#chmod 755 $BENCHMARK_REPORT_TMP/$OCTANE_EXTRACT
-
-# Download benchmark executable.
-#gcloud storage -m cp $BENCHMARK_SOFTWARE_LOC/$INSTALLER_NAME $TMPDIR
-#chmod 755 $TMPDIR/$INSTALLER_NAME
 
 # Install ffmpeg.
 echo "`date`: ********* INSTALLING FFMPEG *********"

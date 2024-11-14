@@ -106,7 +106,7 @@ PROJECT="benchmarking-rendering-sw"
 STARTUP_SCRIPT_URL="gs://render-benchmark-scripts/$BENCH_TYPE-$OS-startup.sh"
 IMAGE="ubuntu-2204-jammy-v20240927"
 IMAGE_PROJECT="ubuntu-os-cloud"
-BOOT_DISK_SIZE="10GB"
+BOOT_DISK_SIZE="100GB"
 
 if [[ $OS == "windows" ]]; then
   IMAGE="windows-server-2019-dc-v20200714"
